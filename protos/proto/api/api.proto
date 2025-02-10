@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package urlshortener;
+
+import "google/api/annotations.proto";
+
+option go_package = ".;urlshortener";
+
+service UrlShortener {
+  rpc CreateShortURL(CreateShortURLRequest) returns (CreateShortURLResponse) {
+    option (google.api.http) = {
+      post: "/url-shorter"
+      body: "*"
+    };
+  }
+
+  rpc GetOriginalURL(GetOriginalURLRequest) returns (GetOriginalURLResponse) {
+    option (google.api.http) = {
+      get: "/url-shorter/{alias}"
+    };
+  }
+}
+
+message CreateShortURLRequest {
+  string original_url = 1;
+}
+
+message CreateShortURLResponse {
+  string alias = 1;
+}
+
+message GetOriginalURLRequest {
+  string alias = 1;
+}
+
+message GetOriginalURLResponse {
+  string original_url = 1;
+}
