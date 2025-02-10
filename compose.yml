@@ -1,0 +1,20 @@
+services:
+  url_shorter:
+    image: postgres:16
+    container_name: url_shorter
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: caxap
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - url_shorter:/var/lib/postgresql/data
+    networks:
+      - backend
+
+volumes:
+  url_shorter: {}
+
+networks:
+  backend: {}
