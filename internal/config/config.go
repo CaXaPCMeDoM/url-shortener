@@ -10,14 +10,13 @@ import (
 
 type Config struct {
 	Env        string     `yaml:"env" env-default:"prod"`
-	HttpServer HttpServer `yaml:"http_server"`
+	HttpServer HttpServer `yaml:"grpc"`
 	Database   Database   `yaml:"db"`
 }
 
 type HttpServer struct {
-	Address     string        `yaml:"address" env-required:"true"`
-	Timeout     time.Duration `yaml:"timeout" env-default:"5s"`
-	IdleTimeout time.Duration `yaml:"idleTimeout" env-default:"60s"`
+	Address int           `yaml:"port" env-required:"true"`
+	Timeout time.Duration `yaml:"timeout" env-default:"5s"`
 }
 
 type Database struct {
