@@ -2,17 +2,19 @@ package memory
 
 import (
 	"sync"
-	"url-shortener/internal/storage"
+	"url-shortener/internal/storage/errdef"
 )
 
 type Storage struct {
-	mu   sync.RWMutex
-	urls map[string]string
+	mu          sync.RWMutex
+	urls        map[string]string
+	urlsReverse map[string]string
 }
 
 func New() *Storage {
 	return &Storage{
-		urls: make(map[string]string),
+		urls:        make(map[string]string),
+		urlsReverse: make(map[string]string),
 	}
 }
 
@@ -21,10 +23,11 @@ func (s *Storage) SaveUrl(urlAbsolute string, alias string) error {
 	defer s.mu.Unlock()
 
 	if _, exists := s.urls[alias]; exists {
-		return storage.ErrURLExists
+		return errdef.ErrURLExists
 	}
 
 	s.urls[alias] = urlAbsolute
+	s.urlsReverse[urlAbsolute] = alias
 	return nil
 }
 
@@ -34,8 +37,26 @@ func (s *Storage) GetUrl(alias string) (string, error) {
 
 	url, exists := s.urls[alias]
 	if !exists {
-		return "", storage.ErrURLNotFound
+		return "", errdef.ErrURLNotFound
 	}
-
 	return url, nil
+}
+
+func (s *Storage) GetAlias(urlAbsolute string) (string, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+
+	alias, exists := s.urlsReverse[urlAbsolute]
+	if !exists {
+		return "", errdef.ErrURLNotFound
+	}
+	return alias, nil
+}
+
+func (s *Storage) CheckAliasURLExists(alias string) (bool, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+
+	_, exists := s.urls[alias]
+	return exists, nil
 }

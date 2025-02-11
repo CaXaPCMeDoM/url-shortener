@@ -10,7 +10,7 @@ import (
 	pb "url-shortener/protos/gen/go"
 )
 
-func RunGRPCServer(grpcAddr string, shortenerService *shortener.ShortenerService, cfg config.Config) error {
+func RunGRPCServer(grpcAddr string, shortenerService *shortener.Service, cfg config.Config) error {
 	configuration(cfg)
 
 	lis, err := net.Listen("tcp", grpcAddr)

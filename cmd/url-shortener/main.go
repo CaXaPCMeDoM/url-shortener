@@ -2,31 +2,43 @@ package main
 
 import (
 	"flag"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"
 	"os"
 	"url-shortener/internal/config"
-	"url-shortener/internal/storage"
+	"url-shortener/internal/gateway"
+	"url-shortener/internal/service/shortener"
+	"url-shortener/internal/storage/provider"
+	"url-shortener/internal/transport"
 )
 
 func main() {
 	storageType := *flag.String("storage", "memory", "Тип хранилища (memory или postgres)")
 	flag.Parse()
 
-	cfg := config.MustLoad()
+	cfg := *config.MustLoad()
 
-	store, err := storage.GetDefaultProvider().Provide(storageType, *cfg)
+	store, err := provider.GetDefaultProvider().Provide(storageType, cfg)
 
 	if err != nil {
 		slog.Error("failed to init storage", slog.String("error", err.Error()))
 		os.Exit(1)
 	}
 
-	router := chi.NewRouter()
+	shortenerService := shortener.New(store, cfg)
 
-	router.Use(middleware.RequestID)
-	router.Use(middleware.Logger)
-	router.Use(middleware.Recoverer)
-	router.Use(middleware.URLFormat)
+	go func() {
+		if err := transport.RunGRPCServer(cfg.Grpc.Address, shortenerService, cfg); err != nil {
+			slog.Error("gRPC server failed", slog.String("error", err.Error()))
+			os.Exit(1)
+		}
+	}()
+
+	go func() {
+		if err := gateway.RunHTTPServer(cfg.Http.Address, cfg.Grpc.Address); err != nil {
+			slog.Error("HTTP server failed", slog.String("error", err.Error()))
+			os.Exit(1)
+		}
+	}()
+
+	select {}
 }
