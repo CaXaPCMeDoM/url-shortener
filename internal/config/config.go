@@ -9,13 +9,15 @@ import (
 )
 
 type Config struct {
-	Env        string     `yaml:"env" env-default:"prod"`
-	HttpServer HttpServer `yaml:"grpc"`
-	Database   Database   `yaml:"db"`
+	Env          string       `yaml:"env" env-default:"prod"`
+	Grpc         Grpc         `yaml:"grpc"`
+	Http         Http         `yaml:"http"`
+	Database     Database     `yaml:"db"`
+	UrlGenerator UrlGenerator `yaml:"url_generator"`
 }
 
-type HttpServer struct {
-	Address int           `yaml:"port" env-required:"true"`
+type Grpc struct {
+	Address string        `yaml:"address" env-required:"true"`
 	Timeout time.Duration `yaml:"timeout" env-default:"5s"`
 }
 
@@ -26,6 +28,15 @@ type Database struct {
 	Password string `yaml:"password" env-required:"true"`
 	DBName   string `yaml:"dbname" env-required:"true"`
 	SSLMode  string `yaml:"sslmode" env-default:"disable"`
+}
+
+type Http struct {
+	Address string `yaml:"address" env-required:"true"`
+}
+
+type UrlGenerator struct {
+	MaxAttempt int `yaml:"max_attempt" env-default:"5"`
+	Length     int `yaml:"length" env-default:"5"`
 }
 
 func (db *Database) DSN() string {

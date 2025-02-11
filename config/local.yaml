@@ -1,7 +1,10 @@
 env: "local"
 grpc:
-  port: 44044
-  timeout: 5s
+  address: ":44044"
+  timeout: 10s
+
+http:
+  address: ":8090"
 
 db:
   host: "localhost"
@@ -10,3 +13,7 @@ db:
   password: "1234"
   dbname: "db"
   sslmode: "disable"
+
+url_generator:
+  max_attempt: 15 # Максимальное количество попыток создать уникальный alias
+  length: 10
