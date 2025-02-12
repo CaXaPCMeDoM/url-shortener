@@ -12,12 +12,12 @@ import (
 )
 
 func main() {
-	storageType := *flag.String("storage", "memory", "Тип хранилища (memory или postgres)")
+	storageType := flag.String("storage", "memory", "Тип хранилища (memory или postgres)")
 	flag.Parse()
 
 	cfg := *config.MustLoad()
 
-	store, err := provider.GetDefaultProvider().Provide(storageType, cfg)
+	store, err := provider.GetDefaultProvider().Provide(*storageType, cfg)
 
 	if err != nil {
 		slog.Error("failed to init storage", slog.String("error", err.Error()))
@@ -34,7 +34,7 @@ func main() {
 	}()
 
 	go func() {
-		if err := gateway.RunHTTPServer(cfg.Http.Address, cfg.Grpc.Address); err != nil {
+		if err := gateway.RunHTTPServer(cfg.HTTP.Address, cfg.Grpc.Address); err != nil {
 			slog.Error("HTTP server failed", slog.String("error", err.Error()))
 			os.Exit(1)
 		}

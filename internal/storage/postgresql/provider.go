@@ -18,7 +18,7 @@ func (p *Provider) SetNext(provider interfaces.Provider) {
 
 func (p *Provider) Provide(storageType string, config config.Config) (storage.Storage, error) {
 	if storageType == constants.POSTGRES {
-		return New(config.Database.DSN())
+		return New(config.Storage.Postgres)
 	}
 	if p.next != nil {
 		return p.next.Provide(storageType, config)

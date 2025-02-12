@@ -26,12 +26,12 @@ func main() {
 	cfg := config.MustLoad()
 
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=%s&x-migrations-table=%s",
-		cfg.Database.User,
-		cfg.Database.Password,
-		cfg.Database.Host,
-		cfg.Database.Port,
-		cfg.Database.DBName,
-		cfg.Database.SSLMode,
+		cfg.Storage.Postgres.User,
+		cfg.Storage.Postgres.Password,
+		cfg.Storage.Postgres.Host,
+		cfg.Storage.Postgres.Port,
+		cfg.Storage.Postgres.DBName,
+		cfg.Storage.Postgres.SSLMode,
 		migrationsTable,
 	)
 

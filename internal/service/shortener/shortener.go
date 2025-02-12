@@ -27,8 +27,8 @@ type Service struct {
 }
 
 func New(storage storage.Storage, config config.Config) *Service {
-	aliasLength = config.UrlGenerator.Length
-	maxAttempts = config.UrlGenerator.MaxAttempt
+	aliasLength = config.URLGenerator.Length
+	maxAttempts = config.URLGenerator.MaxAttempt
 	return &Service{storage: storage}
 }
 

@@ -1,11 +1,14 @@
 package postgresql
 
 import (
+	"context"
 	"database/sql"
 	"errors"
 	"fmt"
 	"github.com/lib/pq"
 	"log/slog"
+	"time"
+	"url-shortener/internal/config"
 	"url-shortener/internal/storage/errdef"
 )
 
@@ -17,10 +20,22 @@ type Storage struct {
 	db *sql.DB
 }
 
-func New(storagePath string) (*Storage, error) {
-	pool, err := sql.Open("postgres", storagePath)
+func New(cfg config.PostgresConfig) (*Storage, error) {
+	pool, err := sql.Open("postgres", cfg.DSN())
 	if err != nil {
 		return nil, fmt.Errorf("unable to connect to database: %w", err)
+	}
+
+	pool.SetMaxOpenConns(cfg.Pool.MaxOpenConns)
+	pool.SetMaxIdleConns(cfg.Pool.MaxIdleConns)
+	pool.SetConnMaxIdleTime(cfg.Pool.ConnMaxIdleTime)
+	pool.SetConnMaxLifetime(cfg.Pool.ConnMaxLifetime)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if err := pool.PingContext(ctx); err != nil {
+		return nil, fmt.Errorf("database ping failed: %w", err)
 	}
 
 	return &Storage{db: pool}, nil
@@ -102,7 +117,6 @@ func (s *Storage) GetAlias(urlAbsolute string) (string, error) {
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			slog.Warn("url not found", slog.String("url", urlAbsolute))
 			return "", errdef.ErrURLNotFound
 		}
 

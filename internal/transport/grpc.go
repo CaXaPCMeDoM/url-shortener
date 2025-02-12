@@ -6,11 +6,14 @@ import (
 	"log"
 	"net"
 	"url-shortener/internal/config"
-	"url-shortener/internal/service/shortener"
 	pb "url-shortener/protos/gen/go"
 )
 
-func RunGRPCServer(grpcAddr string, shortenerService *shortener.Service, cfg config.Config) error {
+type ShortenerService interface {
+	pb.UrlShortenerServer
+}
+
+func RunGRPCServer(grpcAddr string, shortenerService ShortenerService, cfg config.Config) error {
 	configuration(cfg)
 
 	lis, err := net.Listen("tcp", grpcAddr)

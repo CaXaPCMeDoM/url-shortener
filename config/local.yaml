@@ -6,13 +6,22 @@ grpc:
 http:
   address: ":8090"
 
-db:
-  host: "localhost"
-  port: 5436
-  user: "caxap"
-  password: "1234"
-  dbname: "db"
-  sslmode: "disable"
+storage:
+  type: postgres
+  postgres:
+    host: "localhost"
+    port: 5436
+    user: "caxap"
+    password: "1234"
+    dbname: "db"
+    sslmode: "disable"
+    pool:
+      max_open_conns: 50
+      max_idle_conns: 15
+      conn_max_idle_time: "10m"
+      conn_max_lifetime: "1h"
+
+
 
 url_generator:
   max_attempt: 15 # Максимальное количество попыток создать уникальный alias
