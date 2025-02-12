@@ -14,11 +14,9 @@ func TestStorage_SaveUrl(t *testing.T) {
 	url := "https://example.com"
 	alias := "abc123"
 
-	// Сохранение нового URL
 	err := storage.SaveUrl(url, alias)
 	assert.NoError(t, err, "unexpected error while saving URL")
 
-	// Повторное сохранение того же alias должно вернуть ошибку
 	err = storage.SaveUrl("https://another.com", alias)
 	assert.ErrorIs(t, err, errdef.ErrURLExists, "expected ErrURLExists when saving duplicate alias")
 }
@@ -29,11 +27,9 @@ func TestStorage_GetUrl(t *testing.T) {
 	url := "https://example.com"
 	alias := "abc123"
 
-	// Запрос несуществующего alias
 	_, err := storage.GetUrl(alias)
 	assert.ErrorIs(t, err, errdef.ErrURLNotFound, "expected ErrURLNotFound for non-existing alias")
 
-	// Сохранение и получение
 	_ = storage.SaveUrl(url, alias)
 	retrievedURL, err := storage.GetUrl(alias)
 	assert.NoError(t, err, "unexpected error while getting URL")
@@ -46,11 +42,9 @@ func TestStorage_GetAlias(t *testing.T) {
 	url := "https://example.com"
 	alias := "abc123"
 
-	// Запрос несуществующего URL
 	_, err := storage.GetAlias(url)
 	assert.ErrorIs(t, err, errdef.ErrURLNotFound, "expected ErrURLNotFound for non-existing URL")
 
-	// Сохранение и получение
 	_ = storage.SaveUrl(url, alias)
 	retrievedAlias, err := storage.GetAlias(url)
 	assert.NoError(t, err, "unexpected error while getting alias")
@@ -62,12 +56,10 @@ func TestStorage_CheckAliasURLExists(t *testing.T) {
 
 	alias := "abc123"
 
-	// Проверка несуществующего alias
 	exists, err := storage.CheckAliasURLExists(alias)
 	assert.NoError(t, err, "unexpected error while checking alias existence")
 	assert.False(t, exists, "alias should not exist initially")
 
-	// Сохранение и проверка существования
 	_ = storage.SaveUrl("https://example.com", alias)
 	exists, err = storage.CheckAliasURLExists(alias)
 	assert.NoError(t, err, "unexpected error while checking alias existence")

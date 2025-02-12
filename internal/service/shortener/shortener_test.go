@@ -46,7 +46,6 @@ func TestCreateShortURL(t *testing.T) {
 	originalURL := "https://example.com"
 	alias := "abc123xyz_"
 
-	// Тест: URL уже существует
 	mockStorage.On("GetAlias", originalURL).Return(alias, nil).Once()
 	resp, err := service.CreateShortURL(ctx, &pb.CreateShortURLRequest{OriginalUrl: originalURL})
 	assert.NoError(t, err)
@@ -72,13 +71,11 @@ func TestGetOriginalURL(t *testing.T) {
 	alias := "abc123xyz_"
 	originalURL := "https://example.com"
 
-	// Тест: Alias существует
 	mockStorage.On("GetUrl", alias).Return(originalURL, nil).Once()
 	resp, err := service.GetOriginalURL(ctx, &pb.GetOriginalURLRequest{Alias: alias})
 	assert.NoError(t, err)
 	assert.Equal(t, originalURL, resp.OriginalUrl)
 
-	// Тест: Alias не найден
 	mockStorage.On("GetUrl", alias).Return("", errdef.ErrURLNotFound).Once()
 	resp, err = service.GetOriginalURL(ctx, &pb.GetOriginalURLRequest{Alias: alias})
 	assert.Error(t, err)

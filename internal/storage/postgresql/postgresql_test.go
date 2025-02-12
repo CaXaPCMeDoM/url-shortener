@@ -27,7 +27,6 @@ func TestStorage_SaveUrl(t *testing.T) {
 	err = storage.SaveUrl(url, alias)
 	assert.NoError(t, err)
 
-	// Проверка ошибки нарушения уникальности
 	mock.ExpectPrepare("INSERT INTO url").ExpectExec().
 		WithArgs(alias, "https://another.com").
 		WillReturnError(&pq.Error{Code: UniqueViolation})
@@ -55,7 +54,6 @@ func TestStorage_GetUrl(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, expectedURL, url)
 
-	// Проверка ошибки, если alias не найден
 	mock.ExpectPrepare("SELECT url FROM url WHERE alias").
 		ExpectQuery().
 		WithArgs("unknown").
@@ -84,7 +82,6 @@ func TestStorage_GetAlias(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, expectedAlias, alias)
 
-	// Проверка ошибки, если URL не найден
 	mock.ExpectPrepare("SELECT alias FROM url WHERE url").
 		ExpectQuery().
 		WithArgs("https://unknown.com").
@@ -112,7 +109,6 @@ func TestStorage_CheckAliasURLExists(t *testing.T) {
 	assert.NoError(t, err)
 	assert.True(t, exists)
 
-	// Проверка случая, если alias не существует
 	mock.ExpectPrepare("SELECT EXISTS").
 		ExpectQuery().
 		WithArgs("unknown").
