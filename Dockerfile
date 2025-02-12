@@ -1,7 +1,5 @@
 FROM golang:1.23.1-alpine AS builder
 
-RUN apk update && apk add --no-cache git ca-certificates
-
 WORKDIR /app
 
 COPY go.mod go.sum ./
@@ -9,19 +7,27 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o main ./cmd/url-shortener
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/migrate ./cmd/migrator/main.go
 
-FROM alpine:latest
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/url-shortener ./cmd/url-shortener/main.go
 
-RUN apk --no-cache add ca-certificates tzdata
+FROM alpine:3.19
 
 WORKDIR /app
 
-COPY --from=builder /app/main .
+COPY --from=builder /app/migrate /app/migrate
+COPY --from=builder /app/url-shortener /app/url-shortener
 
-COPY .env .
-COPY config/local.yaml ./config/
+COPY ./migrations /app/migrations
 
-EXPOSE 44044 8090
+COPY .env /app/.env
+COPY ./config/local.yaml /app/config/local.yaml
 
-CMD ["./main"]
+RUN echo -e '#!/bin/sh\n\
+/app/migrate -migrations-path /app/migrations up\n\
+exec /app/url-shortener' > /app/entrypoint.sh && \
+    chmod +x /app/entrypoint.sh
+
+EXPOSE 8090 44044
+
+CMD ["/app/entrypoint.sh"]

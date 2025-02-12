@@ -1,4 +1,29 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myusername/my-url-shortener:1.0.0
+    ports:
+      - "8090:8090"
+      - "44044:44044"
+    depends_on:
+      - url_shorter
+    environment:
+      CONFIG_PATH: /app/config/local.yaml
+      STORAGE: postgres
+      POSTGRES_HOST: url_shorter
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:-db}
+      POSTGRES_USER: ${POSTGRES_USER:-caxap}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1234}
+    volumes:
+      - ./.env:/app/.env
+      - ./config/local.yaml:/app/config/local.yaml
+    networks:
+      - backend
+    restart: unless-stopped
+
   url_shorter:
     image: postgres:16
     container_name: url_shorter
@@ -14,7 +39,7 @@ services:
       - backend
 
 volumes:
-  url_shorter: {}
+  url_shorter:
 
 networks:
-  backend: {}
+  backend:
