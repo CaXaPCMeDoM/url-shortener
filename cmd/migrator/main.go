@@ -11,7 +11,7 @@ import (
 	"url-shortener/internal/config"
 )
 
-const BasePrefPath string = "file://"
+const BasePrefPath = "file:///"
 
 func main() {
 	var migrationsPath, migrationsTable string
