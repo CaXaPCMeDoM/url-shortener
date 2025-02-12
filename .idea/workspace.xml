@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="13fb48fb-70ea-4b20-afdf-39237bdfac7e" name="Changes" comment="test: добавлены тесты для основных компонентов">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/url-shortener.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://D:/sdk/go1.23.1" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;CaXaPCMeDoM&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/CaXaPCMeDoM/url-shortener.git&quot;,
+    &quot;accountId&quot;: &quot;50e03ae0-e59d-45a6-9cc3-6254cf8faf08&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2skolqP5OAnfml7I0usczUxy6qw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Docker.Dockerfile builder.executor": "Run",
+    "Docker.Dockerfile.executor": "Run",
+    "Docker.app.Dockerfile builder.executor": "Run",
+    "Docker.compose.yml: Compose Deployment.executor": "Run",
+    "Go Build.go build main.go.executor": "Run",
+    "Go Build.go build url-shortener.executor": "Run",
+    "Go Build.go build url-shortener/cmd/url-shortener.executor": "Run",
+    "Go Test.TestCreateShortURL in url-shortener/internal/service/shortener.executor": "Debug",
+    "Go Test.TestRunGRPCServer in url-shortener/internal/transport.executor": "Run",
+    "Go Test.TestService_CreateShortURL_NewURL in url-shortener/internal/service/shortener.executor": "Run",
+    "Go Test.go test url-shortener/internal/service/shortener.executor": "Run",
+    "Go Test.go test url-shortener/internal/storage/memory.executor": "Run",
+    "Go Test.go test url-shortener/internal/storage/postgresql.executor": "Run",
+    "Go Test.go test url-shortener/internal/transport.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "C:/Users/ZGHTL/Downloads/github-copilot-intellij-1.5.30-242.zip",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/ZGHTL/GolandProjects/url-shortener/main.go",
+    "settings.editor.selected.configurable": "settings.sync"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ZGHTL\GolandProjects\url-shortener" />
+      <recent name="C:\Users\ZGHTL\GolandProjects\url-shortener\cmd\url-shortener" />
+      <recent name="C:\Users\ZGHTL\GolandProjects\url-shortener\protos" />
+      <recent name="C:\Users\ZGHTL\GolandProjects\url-shortener\migrations" />
+      <recent name="C:\Users\ZGHTL\GolandProjects\url-shortener\internal\storage\postgresql" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestRunGRPCServer in url-shortener/internal/transport">
+    <configuration name="TestCreateShortURL in url-shortener/internal/service/shortener" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/internal/service/shortener" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/internal/service/shortener" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestCreateShortURL\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRunGRPCServer in url-shortener/internal/transport" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/internal/transport" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/internal/transport" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestRunGRPCServer\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test url-shortener/internal/storage/memory" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/internal/storage/memory" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/internal/storage/memory" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test url-shortener/internal/storage/postgresql" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/internal/storage/postgresql" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/internal/storage/postgresql" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test url-shortener/internal/transport" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/internal/transport" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/internal/transport" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Test.TestCreateShortURL in url-shortener/internal/service/shortener" />
+      <item itemvalue="Go Test.TestRunGRPCServer in url-shortener/internal/transport" />
+      <item itemvalue="Go Test.go test url-shortener/internal/storage/memory" />
+      <item itemvalue="Go Test.go test url-shortener/internal/storage/postgresql" />
+      <item itemvalue="Go Test.go test url-shortener/internal/transport" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestRunGRPCServer in url-shortener/internal/transport" />
+        <item itemvalue="Go Test.go test url-shortener/internal/transport" />
+        <item itemvalue="Go Test.go test url-shortener/internal/storage/postgresql" />
+        <item itemvalue="Go Test.go test url-shortener/internal/storage/memory" />
+        <item itemvalue="Go Test.TestCreateShortURL in url-shortener/internal/service/shortener" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-5df93f7ad4aa-df9ad98b711f-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-242.22855.106" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-GO-242.22855.106" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add .proto" />
+    <MESSAGE value="feat: add storage(postgresql and memory)" />
+    <MESSAGE value="feat: add app config" />
+    <MESSAGE value="feat: add compose with database(postgresql)" />
+    <MESSAGE value="feat: add migration" />
+    <MESSAGE value="feat: chain for memory/postgres" />
+    <MESSAGE value="(промежуточный вариант)" />
+    <MESSAGE value="refactor: исправлены баги с эндпоинтами." />
+    <MESSAGE value="feat: config has been change for work with grpc" />
+    <MESSAGE value="docks:" />
+    <MESSAGE value="TODO: shortener - нужно написать логику" />
+    <MESSAGE value="database: url и индексы под url and alias теперь UNIQUE" />
+    <MESSAGE value="refactor: незначительные исправления с пакетами и полями конфигурации" />
+    <MESSAGE value="refactor: compose: исправлены environment - теперь они конфигурируемы" />
+    <MESSAGE value="feat: добавлены переменные окружения. В gitignore не добавлял." />
+    <MESSAGE value="docks: dockerfile add" />
+    <MESSAGE value="test: добавлены тесты для основных компонентов" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: добавлены тесты для основных компонентов" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/url-shortener/main.go</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/storage/postgresql/postgresql.go</url>
+          <line>51</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/storage/postgresql/postgresql.go</url>
+          <line>78</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/storage/postgresql/postgresql.go</url>
+          <line>46</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/service/shortener/shortener_test.go</url>
+          <line>40</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/transport/grpc_test.go</url>
+          <line>54</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
